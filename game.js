@@ -33,7 +33,7 @@ const SFX_FILES = {
 /* クリア投稿・リンク */
 const TITLE = '上下左右';
 const PUZZLE_URL = 'https://yuarika.github.io/UDLR/';
-const ANNOUNCEMENT_POST_URL = '';  // ← 告知ポストのURLを入れる(空欄なら投稿文に含めない)
+const ANNOUNCEMENT_POST_URL = 'https://x.com/yuarikaa/status/2113564732238295257';  // ← 告知ポストのURLを入れる(空欄なら投稿文に含めない)
 const CLEAR_TAGS = '#Web_上下左右';
 const PROFILE_URL = 'https://yuarika.github.io/Yuarika_Profile/';
 
