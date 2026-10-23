@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>上下左右</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@700&family=Zen+Kaku+Gothic+New:wght@500;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="back" href="index.html">上下左右</a>
+    <button id="rs" type="button">RESET</button>
+  </header>
+  <div class="stage" id="st">
+    <canvas id="cv"></canvas>
+    <div class="now" id="now"></div>
+  </div>
+  <div class="turns" id="tw" aria-live="polite">
+    <span class="tl">行動</span>
+    <div class="pips" id="tn"></div>
+    <span class="tc" id="tc"></span>
+  </div>
+  <div class="acts" id="ac">
+    <button class="act" data-n="0" type="button">進む</button>
+    <button class="act" data-n="4" type="button">滑りながら進む</button>
+    <button class="act" data-n="2" type="button">滑りながら戻る</button>
+    <button class="act" data-n="1" type="button">穴に落ちる</button>
+    <button class="act" data-n="3" type="button">進んでから落ちる</button>
+  </div>
+  <div class="dock">
+    <div class="goals" id="gs" aria-label="見つけた漢字"></div>
+  </div>
+  <p class="msg" id="msg"></p>
+</div>
+
+<div class="clear" id="cl" hidden>
+  <div class="box">
+    <h2>謎を解き明かした！</h2>
+    <div class="cross">
+      <span class="c0" id="c0"></span><span class="c2" id="c2"></span><span class="c3" id="c3"></span><span class="c1" id="c1"></span>
+    </div>
+    <div class="btns">
+      <button type="button" class="xp" id="xPost">𝕏 クリアをポスト</button>
+      <a id="profile" href="#" target="_blank" rel="noopener noreferrer">作者プロフィール</a>
+    </div>
+  </div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>

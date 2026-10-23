@@ -1,0 +1,54 @@
+:root{--ink:#0a1f4d;--green:#1c5fe6;--paper:#e6f1ff;--yellow:#ffd24a}
+*{box-sizing:border-box;margin:0}
+body{background-color:#06173d;background-image:linear-gradient(rgba(92,200,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(92,200,255,.08) 1px,transparent 1px);background-size:44px 44px;color:var(--paper);font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;min-height:100vh;display:grid;place-items:center}
+.wrap{width:min(100vw - 1.5rem,1100px,(100vh - 5rem) * 16 / 9);padding:.5rem 0}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+.back{color:var(--paper);font-weight:900;letter-spacing:.12em;text-decoration:none}
+#rs{font:900 .9rem "Zen Kaku Gothic New",sans-serif;letter-spacing:.2em;padding:.4rem 1rem .4rem 1.2rem;background:transparent;color:var(--paper);border:2px solid #5cc8ff;border-radius:4px;cursor:pointer}
+#rs:hover{background:#5cc8ff;color:var(--ink)}
+.stage{position:relative;aspect-ratio:16/9;border:4px solid #5cc8ff;border-radius:4px;overflow:hidden;container-type:inline-size;background:#cfe4ff}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.clear{position:fixed;inset:0;background:rgba(10,31,77,.94);display:grid;place-items:center;z-index:10;animation:fade .6s both}
+.clear[hidden]{display:none}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.box{background:var(--green);padding:1.2rem;border-radius:6px;box-shadow:0 0 0 4px var(--ink),0 0 0 7px var(--paper);width:min(86vw,420px)}
+.box>*{background:#fff;color:var(--ink)}
+h2{font-weight:900;font-size:1.6rem;letter-spacing:.3em;text-align:center;padding:.7rem 0 .7rem .3em;border-radius:3px 3px 0 0}
+.cross{display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);aspect-ratio:1;padding:.8rem;font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:700;font-size:clamp(2.4rem,14vw,4rem);place-items:center;border-top:2px solid var(--green)}
+.c0{grid-area:1/2}.c2{grid-area:2/1}.c3{grid-area:2/3}.c1{grid-area:3/2}
+.btns{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;padding:.9rem;border-radius:0 0 3px 3px;border-top:2px solid var(--green)}
+.btns button,.btns a{font:900 1rem "Zen Kaku Gothic New",sans-serif;letter-spacing:.15em;padding:.6rem 1.2rem;border:2px solid var(--ink);border-radius:4px;background:var(--yellow);color:var(--ink);text-decoration:none;cursor:pointer}
+.btns a{background:#fff}
+@media (prefers-reduced-motion:reduce){.now.on,.clear{animation:none}}
+
+.now{position:absolute;left:50%;top:9.3%;min-width:8cqw;height:8cqw;padding:0 1.2cqw;letter-spacing:.3cqw;white-space:nowrap;transform:translate(-50%,-50%);display:grid;place-items:center;color:var(--ink);border:.3cqw dashed rgba(10,31,77,.3);border-radius:1cqw;font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:700;font-size:5.6cqw;line-height:1}
+.now.on{border:.3cqw solid var(--ink);background:var(--yellow);animation:pop .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:translate(-50%,-50%) scale(.3);opacity:0}to{transform:translate(-50%,-50%) scale(1);opacity:1}}
+.dock{display:flex;justify-content:center;margin-top:.8rem}
+.goals{display:flex;gap:.4rem}
+.goals b{width:2.9rem;height:2.9rem;display:grid;place-items:center;border:3px solid rgba(92,200,255,.4);border-radius:4px;color:rgba(230,241,255,.3);font:700 1.7rem "Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif}
+.goals b.on{border-color:var(--ink);background:var(--yellow);color:var(--ink);animation:pop2 .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop2{from{transform:scale(.4)}to{transform:scale(1)}}
+.msg{min-height:1.6em;margin-top:.5rem;text-align:center;font-weight:500;font-size:.9rem}
+#rs.hot{background:var(--yellow);color:var(--ink);border-color:var(--yellow);animation:blink 1s ease-in-out infinite alternate}
+@keyframes blink{to{box-shadow:0 0 0 4px rgba(255,210,74,.5)}}
+@media (prefers-reduced-motion:reduce){#rs.hot,.goals b.on{animation:none}}
+.btns .xp{background:var(--ink);color:#fff}
+.btns button,.btns a{font-size:.9rem;padding:.55rem 1rem}
+
+.acts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.act{flex:1 1 7rem;font:900 .95rem "Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;letter-spacing:.06em;color:var(--ink);background:#fff;border:3px solid var(--ink);border-radius:6px;padding:.8rem .4rem;cursor:pointer;box-shadow:0 4px 0 #5cc8ff;transition:transform .1s,box-shadow .1s,background .1s}
+.act:hover{background:var(--yellow)}
+.act:active{transform:translateY(3px);box-shadow:0 1px 0 #5cc8ff}
+.act:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.busy .act,.full .act{pointer-events:none;opacity:.35}
+
+.turns{display:flex;align-items:center;justify-content:center;gap:.8rem;margin-top:.8rem;font-weight:900;letter-spacing:.1em}
+.turns .tl{color:#5cc8ff;font-size:.85rem;letter-spacing:.25em}
+.pips{display:flex;gap:.4rem}
+.pips i{width:2.2rem;height:2.2rem;display:grid;place-items:center;border:3px solid rgba(92,200,255,.4);border-radius:4px;color:rgba(230,241,255,.35);font:900 1rem "Zen Kaku Gothic New",sans-serif;font-style:normal;transition:background .15s,color .15s}
+.pips i.d{background:#5cc8ff;border-color:#5cc8ff;color:var(--ink)}
+.pips i.n{border-color:var(--yellow);color:var(--yellow);animation:blink 1s ease-in-out infinite alternate}
+.turns .tc{min-width:6.5em;color:var(--paper);font-size:.95rem}
+.full .pips i.d{background:var(--yellow);border-color:var(--yellow)}
+@media (prefers-reduced-motion:reduce){.pips i.n{animation:none}}

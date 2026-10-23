@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>mapping encoder</title>
+<style>body{font:15px/1.7 sans-serif;max-width:720px;margin:2rem auto;padding:0 1rem}textarea{width:100%;height:16rem;font:15px monospace}pre{background:#eee;padding:1rem;white-space:pre-wrap;word-break:break-all}button{padding:.5rem 1.2rem;margin:.5rem 0}</style></head>
+<body>
+<h1>mapping.txt → game.js 用データ</h1>
+<p>mapping.txt を読み込むか貼り付けて「変換」。出力で game.js の <code>_b</code> の定義を置き換えます。</p>
+<input type="file" id="f" accept=".txt"><br>
+<textarea id="t"># 制作用メモ(公開リポジトリに含めないこと)
+# 書式: 漢字 矢印の並び(書き順)  /  目標 は最終的に出す4字(上下左右の順)
+# 矢印: → 横   ↓ 縦   ↙ 左払い   ↴ 横折れ(┐)   ↘ 右払い・点
+# 並びが「入力した矢印の全体」と一致した時に、その漢字が画面上部に出る
+目標 上下左右
+一 →
+二 →→
+十 →↓
+人 ↙↘
+力 ↴↙
+卜 ↓↘
+三 →→→
+上 ↓→→
+下 →↓↘
+大 →↙↘
+小 ↓↙↘
+川 ↙↓↓
+土 →↓→
+口 ↓↴→
+千 ↙→↓
+干 →→↓
+夕 ↙↴↘
+中 ↓↴→↓
+文 ↘→↙↘
+木 →↓↙↘
+犬 →↙↘↘
+天 →→↙↘
+五 →↓↴→
+左 →↙→↓→
+右 ↙→↓↴→
+古 →↓↓↴→
+石 →↙↓↴→
+白 ↙↓↴→→
+目 ↓↴→→→
+田 ↓↴↓→→
+正 →↓→↓→
+本 →↓↙↘→
+末 →→↓↙↘
+</textarea><br>
+<button id="go">変換</button>
+<pre id="o"></pre>
+<script>
+const KEY = ['pik','t03','x'].join(''); // game.js の _k と同じにする
+const A = {'→':'0','↓':'1','↙':'2','↴':'3','↘':'4'};
+// 数字でも書ける: 1=→ 2=↴ 3=↘ 4=↓ 5=↙
+const N = {'1':'0','2':'3','3':'4','4':'1','5':'2'};
+document.getElementById('f').onchange = e => e.target.files[0].text().then(s => t.value = s);
+go.onclick = () => {
+  let g = ''; const d = [], seen = {}, errs = [];
+  t.value.split('\n').forEach((ln, i) => {
+    ln = ln.trim(); if (!ln || ln[0] === '#') return;
+    const p = ln.split(/\s+/);
+    if (p[0] === '目標') { g = p[1] || ''; return; }
+    const q = [...(p[1] || '')].map(c => A[c] ?? N[c]);
+    if (p.length < 2 || q.includes(undefined)) { errs.push((i + 1) + '行目が不正'); return; }
+    const s = q.join('');
+    seen[s] = p[0]; d.push([s, p[0]]);
+  });
+  [...g].forEach(c => { if (!d.some(x => x[1] === c)) errs.push('目標の「' + c + '」が辞書にありません'); });
+  if (!g) errs.push('目標 の行がありません');
+  if (errs.length) { o.textContent = errs.join('\n'); return; }
+  const u = new TextEncoder().encode(JSON.stringify({ g, d }));
+  const x = u.map((b, i) => b ^ KEY.charCodeAt(i % KEY.length));
+  const s = btoa(String.fromCharCode(...x)), n = Math.ceil(s.length / 3);
+  o.textContent = "const _b = ['" + [s.slice(0, n), s.slice(n, 2 * n), s.slice(2 * n)].join("',\n            '") + "'].join('');";
+};
+</script></body></html>
