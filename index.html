@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>上下左右</title>
+<meta name="description" content="矢印を選んで、四つの漢字を見つけ出す。WEB PUZZLE">
+<meta property="og:title" content="上下左右">
+<meta property="og:description" content="WEB PUZZLE">
+<meta property="og:image" content="https://yuarika.github.io/UDLR/img/thumbnail.png">
+<meta property="og:url" content="https://yuarika.github.io/UDLR/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="上下左右">
+<meta name="twitter:description" content="WEB PUZZLE">
+<meta name="twitter:image" content="https://yuarika.github.io/UDLR/img/thumbnail.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+</head>
+<body class="intro-page">
+
+<div class="intro-background" aria-hidden="true">
+  <div class="background-grid"></div>
+  <div class="background-circle circle-1"></div>
+  <div class="background-circle circle-2"></div>
+</div>
+
+<main class="intro-card">
+
+  <header class="intro-header">
+    <p class="eyebrow">WEB PUZZLE<span class="eyebrow-line"></span>001</p>
+    <div class="status"><span class="status-dot"></span>SYSTEM ONLINE</div>
+  </header>
+
+  <section class="intro-hero">
+    <div class="hero-figure" aria-hidden="true">
+      <img src="img/pict_idle.png" alt="" onerror="(this.n=(this.n||0)+1)==1?this.src='img/pict.png':(this.onerror=null,this.src='img/pict.svg')">
+    </div>
+    <h1 class="intro-logo">上下左右</h1>
+  </section>
+
+  <section class="about-section">
+    <div class="section-label"><span>01</span>ABOUT</div>
+    <div class="about-box">
+      <div class="about-corner tl"></div><div class="about-corner tr"></div>
+      <div class="about-corner bl"></div><div class="about-corner br"></div>
+      <p>
+        <strong>行動を選び上下左右に動きましょう！</strong><br>
+      </p>
+    </div>
+    <div class="about-warning"><span class="warning-mark">!</span><span>音が出ます。クリック／タップで操作してください。</span></div>
+  </section>
+
+  <section class="action-section">
+    <div class="section-label"><span>02</span>ACTION</div>
+
+    <a class="action-button action-start" href="game.html">
+      <span class="action-number">01</span>
+      <span class="action-main"><span class="action-title">START</span><span class="action-sub">謎解きをはじめる</span></span>
+      <span class="action-arrow">→</span>
+    </a>
+
+    <a class="action-button" id="post-on-x" href="#" target="_blank" rel="noopener noreferrer">
+      <span class="action-number">02</span>
+      <span class="action-main"><span class="action-title"><span class="x-symbol">𝕏</span> POST ON X</span><span class="action-sub">この謎に挑戦することをポスト</span></span>
+      <span class="action-arrow">↗</span>
+    </a>
+
+    <a class="action-button" id="profile" href="#" target="_blank" rel="noopener noreferrer">
+      <span class="action-number">03</span>
+      <span class="action-main"><span class="action-title">AUTHOR PROFILE</span><span class="action-sub">作者のプロフィールを見る</span></span>
+      <span class="action-arrow">↗</span>
+    </a>
+  </section>
+
+  <footer class="intro-footer">
+    <div>上下左右</div>
+    <div>WEB PUZZLE</div>
+    <div>© Yuarika</div>
+  </footer>
+</main>
+
+<script>
+/* ===== 設定(ここを書き換えるだけで投稿内容・リンクを変更できます) ===== */
+const X_POST_URL  = "https://yuarika.github.io/UDLR/";
+const X_POST_TEXT =
+  "WEB謎『上下左右』に挑戦します！\n\n" +
+  X_POST_URL + "\n" +
+  "#Web_上下左右 #VRC_UDLR #謎解き";
+const PROFILE_URL = "https://yuarika.github.io/Yuarika_Profile/";
+
+document.getElementById("post-on-x").href =
+  "https://x.com/intent/post?text=" + encodeURIComponent(X_POST_TEXT);
+document.getElementById("profile").href = PROFILE_URL;
+</script>
+</body>
+</html>

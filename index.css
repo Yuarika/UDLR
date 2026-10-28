@@ -1,0 +1,40 @@
+:root{--navy:#06173d;--deep:#0a1f4d;--blue:#1c5fe6;--cyan:#5cc8ff;--pale:#e6f1ff;--gold:#ffd24a}
+*{box-sizing:border-box;margin:0}
+body.intro-page{min-height:100vh;background:var(--navy);color:var(--pale);font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;padding:1.2rem .8rem 2rem;overflow-x:hidden}
+.intro-background{position:fixed;inset:0;z-index:0;pointer-events:none}
+.background-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(92,200,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(92,200,255,.08) 1px,transparent 1px);background-size:44px 44px}
+.background-circle{position:absolute;border-radius:50%;border:2px solid rgba(92,200,255,.18)}
+.circle-1{width:60vmax;height:60vmax;right:-25vmax;top:-20vmax;background:radial-gradient(circle,rgba(28,95,230,.35),transparent 65%)}
+.circle-2{width:30vmax;height:30vmax;left:-12vmax;bottom:-10vmax}
+.intro-card{position:relative;z-index:1;max-width:620px;margin:0 auto;background:rgba(10,31,77,.88);border:2px solid var(--cyan);border-radius:6px;padding:1.2rem 1.4rem 1rem;box-shadow:0 0 0 6px rgba(92,200,255,.12)}
+.intro-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;font-size:.75rem;letter-spacing:.2em;color:var(--cyan)}
+.eyebrow-line{display:inline-block;width:2rem;height:1px;background:var(--cyan);vertical-align:middle;margin:0 .6rem}
+.status-dot{display:inline-block;width:.55rem;height:.55rem;border-radius:50%;background:var(--gold);margin-right:.5rem;animation:pulse 1.4s ease-in-out infinite alternate}
+@keyframes pulse{to{opacity:.25}}
+.intro-hero{text-align:center;padding:1.6rem 0 1.2rem}
+.hero-figure{width:150px;height:150px;margin:0 auto 1rem;background:#fff;border:4px solid var(--blue);border-radius:4px;display:flex;align-items:flex-end;justify-content:center;padding:12px;overflow:hidden}
+.hero-figure img{height:100%;width:auto;max-width:100%;object-fit:contain;animation:run-in 1s cubic-bezier(.2,.7,.3,1) both}
+@keyframes run-in{from{transform:translateX(-160%)}to{transform:none}}
+.intro-logo{font-weight:900;font-size:clamp(2.4rem,10vw,3.6rem);letter-spacing:.14em;padding-left:.14em;color:#fff}
+.intro-tagline{letter-spacing:.12em;color:var(--cyan);font-weight:500}
+.section-label{font-size:.78rem;letter-spacing:.25em;color:var(--cyan);margin:1.2rem 0 .6rem;display:flex;align-items:center;gap:.7rem}
+.section-label span{background:var(--blue);color:#fff;padding:.05rem .5rem}
+.about-box{position:relative;border:1px solid rgba(92,200,255,.45);padding:1.2rem 1.3rem;line-height:2;background:rgba(6,23,61,.6)}
+.about-box strong{color:var(--gold);font-weight:900}
+.about-corner{position:absolute;width:12px;height:12px;border:3px solid var(--cyan)}
+.tl{top:-3px;left:-3px;border-right:0;border-bottom:0}.tr{top:-3px;right:-3px;border-left:0;border-bottom:0}
+.bl{bottom:-3px;left:-3px;border-right:0;border-top:0}.br{bottom:-3px;right:-3px;border-left:0;border-top:0}
+.about-warning{display:flex;gap:.6rem;align-items:center;margin-top:.8rem;font-size:.85rem}
+.warning-mark{display:grid;place-items:center;width:1.4rem;height:1.4rem;background:var(--gold);color:var(--deep);font-weight:900;border-radius:50%;flex:none}
+.action-button{display:flex;align-items:center;gap:1rem;margin-bottom:.7rem;padding:.8rem 1rem;border:2px solid var(--cyan);color:var(--pale);text-decoration:none;background:rgba(28,95,230,.18);transition:transform .12s,background .12s}
+.action-button:hover{transform:translateX(4px);background:rgba(28,95,230,.5)}
+.action-button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.action-start{background:var(--blue);border-color:#fff}
+.action-number{font-weight:900;color:var(--cyan);font-size:1.1rem}
+.action-start .action-number{color:var(--gold)}
+.action-main{flex:1;display:flex;flex-direction:column}
+.action-title{font-weight:900;letter-spacing:.2em;font-size:1.15rem}
+.action-sub{font-size:.8rem;opacity:.85}
+.action-arrow{font-size:1.4rem;font-weight:900}
+.intro-footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.4rem;margin-top:1.3rem;padding-top:.8rem;border-top:1px solid rgba(92,200,255,.35);font-size:.7rem;letter-spacing:.12em;color:rgba(230,241,255,.65)}
+@media (prefers-reduced-motion:reduce){.hero-figure img,.status-dot{animation:none}}
